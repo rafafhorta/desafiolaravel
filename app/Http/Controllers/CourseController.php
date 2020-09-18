@@ -6,6 +6,8 @@ use App\Course;
 use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Http\Requests\UpdateCourseRequest;
+use App\Http\Requests\StoreCourseRequest;
 
 class CourseController extends Controller
 {
@@ -39,7 +41,7 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCourseRequest $request)
     {
         $slug = Str::slug("$request->name", "$request->category_id", '-');
         $data = $request->all();
@@ -87,7 +89,7 @@ class CourseController extends Controller
      * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(UpdateCourseRequest $request, Course $course)
     {
         $slug = Str::slug("$request->name", "$request->category_id", '-');
         $data = $request->all();

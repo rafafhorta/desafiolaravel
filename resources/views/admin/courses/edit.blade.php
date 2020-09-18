@@ -5,7 +5,7 @@
         @slot('title', 'Editar ' . $course->name)
         @slot('url', route('courses.update', $course->id))
         @slot('form')
-            @include('admin.courses.form', ['create'=> false , 'show'=> false])
+            @include('admin.courses.form', ['create'=> false, 'show'=> false])
         @endslot
     @endcomponent
 @endsection

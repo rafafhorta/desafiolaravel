@@ -4,7 +4,7 @@
         @slot('title', 'Cadastrar um curso')
         @slot('url', route('courses.store'))
         @slot('form')
-            @include('admin.courses.form', ['create'=> true, 'show'=> false])
+            @include('admin.courses.form', ['create'=> true])
         @endslot
     @endcomponent
 @endsection

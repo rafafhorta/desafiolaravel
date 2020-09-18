@@ -15,29 +15,27 @@
         @if($create ?? true)
             <textarea class="summernote form-control" rows="10" id="summernote" name="text" required>{{ old('text',$course->text) }}</textarea>
         @else
-            <p class="text-justify"> {!! $course->text !!} </p>
+            @if($show ?? true)
+                <p class="text-justify"> {!! $course->text !!} </p>
+            @else
+                <textarea class="summernote form-control" rows="10" id="summernote" name="text" required>{{ old('text',$course->text) }}</textarea>
+            @endif
         @endif
     </div>
-    {{-- <div class="form-group col-12">
-        <label for="text" class="required">Descrição </label>
-        <input type="text" name="text" id="text" required class="form-control" autofocus value="{{ old('text', $course->text )}}">
-    </div> --}}
 </div>
 <div class="row">
     <div class="col-sm-6">
         <div class="form-group">
             <label for="imglink" class="required">Imagem </label>
             <div class="custom-file">
-                @if($create ?? false)
+                @if($create ?? true)
+                    <input type="file" name="imglink" class="form-control-file" id="imglink" lang="pt-br" accept="image/*" value="{{ old('imglink', $course->imglink) }}" required>
+                @else
                     @if($show ?? true)
-                        <div>
-                            <img class="img-responsive" width="300" height="300" src="{{ URL('storage/img/course/'. $course->imglink) }}" alt="Imagem do curso {{ $course->name }}" />
-                        </div>
+                        <img class="img-responsive" width="300" height="300" src="{{ URL('storage/img/course/'. $course->imglink) }}" alt="Imagem do curso {{ $course->name }}" />
                     @else
                         <input type="file" name="imglink" class="form-control-file" id="imglink" lang="pt-br" accept="image/*" value="{{ old('imglink', $course->imglink) }}">
                     @endif
-                @else
-                    <input type="file" name="imglink" class="form-control-file" id="imglink" lang="pt-br" accept="image/*" value="{{ old('imglink', $course->imglink) }}" required>
                 @endif
             </div>
         </div>
@@ -45,8 +43,17 @@
 </div>
 <div class="row">
     <div class="form-group col-12">
-        <label for="videolink" class="required">Link do vídeo </label>
-        <input type="text" name="videolink" id="videolink" required class="form-control" autofocus value="{{ old('videolink', $course->videolink )}}">
+        @if($create ?? true)
+            <label for="videolink" class="required">Link do vídeo </label>
+            <input type="text" name="videolink" id="videolink" required class="form-control" autofocus value="{{ old('videolink', $course->videolink )}}">
+        @else
+            @if($show ?? true)
+                <iframe width="420" name="videolink" height="315" src="{{ old('videolink', $course->videolink )}}"></iframe>
+            @else
+                <label for="videolink" class="required">Link do vídeo </label>
+                <input type="text" name="videolink" id="videolink" class="form-control" autofocus value="{{ old('videolink', $course->videolink )}}">
+            @endif
+        @endif
     </div>
 </div>
 <div class="row">

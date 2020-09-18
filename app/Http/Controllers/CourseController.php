@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Http\Requests\StoreCourseRequest;
+use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
@@ -76,7 +77,7 @@ class CourseController extends Controller
      * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit(Course $course, string $slug  = null)
     {
         $categories = Category::orderBy('name', 'asc')->get();
         return view('admin.courses.edit',compact('course', 'categories'));
@@ -115,6 +116,7 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         $course->delete();
+        Storage::delete('img/courses/' . $course->imglink);
         return redirect()->route('courses.index')->with('success',true);
     }
 }

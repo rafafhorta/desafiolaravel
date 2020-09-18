@@ -23,26 +23,6 @@
         @endif
     </div>
 </div>
-{{-- <div class="row">
-    <div class="col-12">
-        <label for="imglink" class="required">Imagem </label>
-        <div class="form-group">
-            <div class="custom-file">
-                @if($create ?? true)
-                    <div><input type="file" name="imglink" class="form-control-file" id="imglink" lang="pt-br" accept="image/*" value="{{ old('imglink', $course->imglink) }}" required></div>
-                @else
-                    @if($show ?? true)
-                        <div>
-                            <img class="img-responsive w-50" src="{{ asset('/storage/img/course/' . $course->imglink) }}" alt="Imagem do curso {{ $course->name }}" />
-                        </div>
-                    @else
-                        <input type="file" name="imglink" class="form-control-file" id="imglink" lang="pt-br" accept="image/*" value="{{ old('imglink', $course->imglink) }}">
-                    @endif
-                @endif
-            </div>
-        </div>
-    </div>
-</div> --}}
 <div class="row">
     <div class="form-group col-12">
         <label for="img" class="required">Imagem </label>
@@ -63,7 +43,7 @@
                 <input type="text" name="videolink" id="videolink" required class="form-control" autofocus value="{{ old('videolink', $course->videolink )}}">
             @else
                 @if($show ?? true)
-                    <iframe width="420" name="videolink" height="315" src="{{ old('videolink', $course->videolink )}}"></iframe>
+                    <iframe width="560" height="315" name="videolink" src="{{ old('videolink', $course->videolink )}}"></iframe>
                 @else
                     <input type="text" name="videolink" id="videolink" class="form-control" autofocus value="{{ old('videolink', $course->videolink )}}">
                 @endif

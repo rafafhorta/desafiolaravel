@@ -1,20 +1,20 @@
 @extends('admin.layouts.app')
 @section('content')
     @component('admin.components.table')
-        @slot('titulo', 'Categoria')
-        @slot('create', route('categories.create'))
+        @slot('titulo', 'Cursos')
+        @slot('create', route('courses.create'))
         @slot('head')
             <th>Nome</th>
             <th class="text-right">Ações</th>     
         @endslot
         @slot('body')
-            @foreach ($categories as $category)
+            @foreach ($courses as $course)
                 <tr>
-                    <td>{{ $category->name }}</td>
+                    <td>{{ $course->name }}</td>
                     <td class="options text-right">
-                        <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary"><i class="fas fa-pen"></i></a> 
-                        <a href="{{ route('categories.show', $category->id) }}" class="btn btn-dark"><i class="nav-icon fas fa-search"></i></a> 
-                        <form method="POST" class="form-delete" action="{{ route('categories.destroy',$category->id)}}">
+                        <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-primary"><i class="fas fa-pen"></i></a> 
+                        <a href="{{ route('courses.show', $course->id) }}" class="btn btn-dark"><i class="nav-icon fas fa-search"></i></a> 
+                        <form method="POST" class="form-delete" action="{{ route('courses.destroy',$course->id)}}">
                             @method('DELETE')
                             @csrf
                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>

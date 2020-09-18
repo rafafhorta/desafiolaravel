@@ -40,6 +40,22 @@
 						</a>
 					</li>
 				@endcan
+				<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+					<li class="nav-item">
+						<a href="{{route('categories.index')}}" class="nav-link {{ Route::is('categories.index') ? 'active' : '' }}">
+							<i class="nav-icon fas fa-stroopwafel"></i>
+							<p>Categorias</p>
+						</a>
+					</li>
+				</ul>
+				<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+					<li class="nav-item">
+						<a href="{{route('courses.index')}}" class="nav-link {{ Route::is('courses.index') ? 'active' : '' }}">
+							<i class="nav-icon fas fa-book-open"></i>
+							<p>Cursos</p>
+						</a>
+					</li>
+				</ul>
 			</ul>
 		</nav>
 	</div>

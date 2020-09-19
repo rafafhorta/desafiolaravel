@@ -65,7 +65,7 @@ class CourseController extends Controller
      * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course)
+    public function show(Course $course, string $slug  = null)
     {
         $categories = Category::all();
         return view('admin.courses.show',compact('course', 'categories'));
@@ -116,7 +116,6 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         $course->delete();
-        Storage::delete('img/courses/' . $course->imglink);
         return redirect()->route('courses.index')->with('success',true);
     }
 }

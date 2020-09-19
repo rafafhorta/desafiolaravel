@@ -22,5 +22,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('/users','UserController');
     Route::resource('/categories', 'CategoryController');
+
     Route::resource('/courses', 'CourseController');
+    Route::post('/courses/{slug?}', 'CourseController@show')->name('course.show');
 });
